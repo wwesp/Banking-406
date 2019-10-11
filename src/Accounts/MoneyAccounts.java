@@ -1,5 +1,6 @@
 package src.Accounts;
 
+import java.util.ArrayList;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -8,12 +9,13 @@ abstract public class MoneyAccounts {
     private String accountNumber;
     private String routingNumber;
     private double balence;
-    private String history[][];
+
+    private ArrayList<ArrayList<String>> history;
     private static Lock lock = new ReentrantLock();
 
 
 
-    public MoneyAccounts(String accountNumber, String routingNumber, double balence, String history[][]){
+    public MoneyAccounts(String accountNumber, String routingNumber, double balence, ArrayList<ArrayList<String>> history){
         this.accountNumber=accountNumber;
         this.routingNumber=routingNumber;
         this.balence=balence;
@@ -32,7 +34,7 @@ abstract public class MoneyAccounts {
         return balence;
     }
 
-    public String[][] getHistory() {
+    public ArrayList<ArrayList<String>> getHistory() {
         return history;
     }
 
