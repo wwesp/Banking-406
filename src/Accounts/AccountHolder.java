@@ -3,6 +3,7 @@ package src.Accounts;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.io.*;
 
 public class AccountHolder {
     public LinkedHashMap<String, MoneyAccounts> accounts;
@@ -20,6 +21,10 @@ public class AccountHolder {
         accounts.put(x,y);
     }
 
+    @Override
+    public String toString(){
+        return holder+"::"+mainAccountKey+ "::"+ accounts.keySet();
+    }
 
 
 

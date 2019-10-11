@@ -34,6 +34,7 @@ public class Main {
         jeff.accounts.forEach((s,f)->System.out.println(f));
         System.out.println(jeff.accounts.get("231"));
 
+        System.out.println(jeff.toString());
 
 
 
