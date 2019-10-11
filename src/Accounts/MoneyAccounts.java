@@ -1,6 +1,10 @@
 package src.Accounts;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -10,12 +14,15 @@ abstract public class MoneyAccounts {
     private String routingNumber;
     private double balence;
 
-    private ArrayList<ArrayList<String>> history;
+    private LinkedHashMap<Integer, String> history;
+
+
     private static Lock lock = new ReentrantLock();
 
 
 
-    public MoneyAccounts(String accountNumber, String routingNumber, double balence, ArrayList<ArrayList<String>> history){
+    public MoneyAccounts(String accountNumber, String routingNumber, double balence, LinkedHashMap<Integer, String> history){
+        history=new LinkedHashMap<>();
         this.accountNumber=accountNumber;
         this.routingNumber=routingNumber;
         this.balence=balence;
@@ -34,7 +41,7 @@ abstract public class MoneyAccounts {
         return balence;
     }
 
-    public ArrayList<ArrayList<String>> getHistory() {
+    public LinkedHashMap<Integer, String> getHistory() {
         return history;
     }
 
@@ -58,6 +65,7 @@ abstract public class MoneyAccounts {
         //if return true it worked, false is a fail authorized
         if(doIHave(amt)){
             changeBalence(amt);
+            catalog();
             return true;
         }
         else{
@@ -67,13 +75,29 @@ abstract public class MoneyAccounts {
 
     }//end of authpayment
 
-
-
     public boolean doIHave(double amt){
         //do I have x amt
         //seperate from authorize since that is going though with the whole payment
         return amt<balence;
     }
+
+    @Override
+    public String toString(){
+        //the toString on this method is made for the database
+
+        //new line and :-=-: seperate data, and :=: seperate data in each datapool
+        return getAccountNumber()+":=:"+
+                getRoutingNumber()+":=:"+
+                getBalence()+":=:"+
+                getHistory().toString()+":-=-:\n";
+    }
+
+    private void catalog(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss yyyy/MM/dd");
+        LocalDateTime now = LocalDateTime.now();
+        history.put(history.size()+1, dtf.format(now) + " :: "+ balence);
+    }
+
 
 
 
