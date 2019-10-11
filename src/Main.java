@@ -27,14 +27,14 @@ public class Main {
         AccountHolder jeff = new AccountHolder("Jeff", "A134B0", null);
 
 
-        jeff.addAccount(x);
-        jeff.addAccount(z);
+        jeff.addAccount("231",x);
+        jeff.addAccount("654332",z);
         //System.out.println(jeff.accounts);
 
-        
+        jeff.accounts.forEach((s,f)->System.out.println(f));
+        System.out.println(jeff.accounts.get("231"));
 
-        jeff.accounts.forEach((n)->System.out.println(n.getBalence()));
-        jeff.accounts.forEach((n)->System.out.println(n.toString()));
+
 
 
 
