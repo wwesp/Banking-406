@@ -21,10 +21,10 @@ public class Main {
 
         ArrayList<MoneyAccounts> y= new ArrayList<MoneyAccounts>();
 
-        CheckingAccount x = new CheckingAccount("231", "21324", 900,null);
-        SavingsAccount z= new SavingsAccount("654332", "6543234567", 30, null);
+        CheckingAccount x = new CheckingAccount("000-00-0000","231", "21324", 900,null);
+        SavingsAccount z= new SavingsAccount("000-00-0000","654332", "6543234567", 30, null);
 
-        AccountHolder jeff = new AccountHolder("Jeff", "A134B0", null);
+        AccountHolder jeff = new AccountHolder("000-00-0000","Jeff", "A134B0", null);
 
 
         jeff.addAccount("231",x);

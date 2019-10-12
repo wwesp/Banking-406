@@ -9,7 +9,9 @@ public class AccountHolder {
     public LinkedHashMap<String, MoneyAccounts> accounts;
     public String holder;
     public String mainAccountKey;
-    public AccountHolder(String holder, String mainAccountKey, LinkedHashMap<String,MoneyAccounts> accounts){
+    String SSN;
+    public AccountHolder(String SSN, String holder, String mainAccountKey, LinkedHashMap<String,MoneyAccounts> accounts){
+        this.SSN=SSN;
         accounts=new LinkedHashMap<>();
         this.accounts=accounts;
         this.holder=holder;

@@ -13,7 +13,7 @@ abstract public class MoneyAccounts {
     private String accountNumber;
     private String routingNumber;
     private double balence;
-
+    String SSN;
     private LinkedHashMap<Integer, String> history;
 
 
@@ -21,7 +21,8 @@ abstract public class MoneyAccounts {
 
 
 
-    public MoneyAccounts(String accountNumber, String routingNumber, double balence, LinkedHashMap<Integer, String> history){
+    public MoneyAccounts(String SSN,String accountNumber, String routingNumber, double balence, LinkedHashMap<Integer, String> history){
+        this.SSN=SSN;
         history=new LinkedHashMap<>();
         this.accountNumber=accountNumber;
         this.routingNumber=routingNumber;
@@ -80,13 +81,16 @@ abstract public class MoneyAccounts {
         //seperate from authorize since that is going though with the whole payment
         return amt<balence;
     }
-
+    public String getSSN(){
+        return SSN;
+    }
     @Override
     public String toString(){
         //the toString on this method is made for the database
 
         //new line and :-=-: seperate data, and :=: seperate data in each datapool
-        return getAccountNumber()+":=:"+
+        return  getSSN()+":=:"+
+                getAccountNumber()+":=:"+
                 getRoutingNumber()+":=:"+
                 getBalence()+":=:"+
                 getHistory().toString()+":-=-:\n";

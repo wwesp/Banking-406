@@ -42,7 +42,7 @@ public class GUI {
                 String routingnum = textField2.getText();
                 double balance = Double.parseDouble(textField3.getText());
                 String history = textField4.getText();
-                CheckingAccount x = new CheckingAccount(accountnum, routingnum, balance,null);
+                CheckingAccount x = new CheckingAccount("000-00-0000",accountnum, routingnum, balance,null);
                 JOptionPane.showInternalMessageDialog(null, x );
                 System.out.println("This is the Checking Account " + x );
             }
