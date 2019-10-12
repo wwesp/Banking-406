@@ -11,18 +11,19 @@ public class GUI {
 
     private JPanel HomePage;
     private JButton AcceptButton;
-    private JTextField textField4;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField1;
+    private JButton Clear;
+    private JTextField SSN_textfield;
+    private JTextField customer_textfield;
+    private JTextField account_number_textfield;
+    private JTextField routing_number_textfield;
+    private JTextField balance_textfield;
+    private JTextField history_textfield;
+    private JLabel SSN;
+    private JLabel Customer;
     private JLabel account_num;
     private JLabel routing_num;
     private JLabel balance;
     private JLabel history;
-    private JButton Clear;
-    private JTextField textField5;
-    private JLabel Customer;
-
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Enter ");
@@ -38,11 +39,12 @@ public class GUI {
         AcceptButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String accountnum = textField1.getText();
-                String routingnum = textField2.getText();
-                double balance = Double.parseDouble(textField3.getText());
-                String history = textField4.getText();
-                CheckingAccount x = new CheckingAccount("000-00-0000",accountnum, routingnum, balance,null);
+                String accountnum = account_number_textfield.getText();
+                String routingnum = routing_number_textfield.getText();
+                String SSN = SSN_textfield.getText();
+                double balance = Double.parseDouble(balance_textfield.getText());
+                String history = history_textfield.getText();
+                CheckingAccount x = new CheckingAccount(SSN,accountnum, routingnum, balance,null);
                 JOptionPane.showInternalMessageDialog(null, x );
                 System.out.println("This is the Checking Account " + x );
             }
@@ -50,7 +52,12 @@ public class GUI {
         Clear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                SSN_textfield.setText("");
+                customer_textfield.setText("");
+                account_number_textfield.setText("");
+                routing_number_textfield.setText("");
+                balance_textfield.setText("");
+                history_textfield.setText("");
             }
         });
     }
